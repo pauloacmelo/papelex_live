@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Papelex</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js?v=2.1.9"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="controls">
+      <label>Filtro:</label>
+      
+      <button class="filter" data-filter="all">Todos</button>
+      <button class="filter" data-filter=".category-1">Equipe A</button>
+      <button class="filter" data-filter=".category-2">Equipe B</button>
+      <button class="filter" data-filter=".category-3">Equipe C</button>
+      <button class="filter" data-filter=".category-4">Equipe D</button>
+      <button class="filter" data-filter=".category-5">Equipe E</button>
+      <button class="filter" data-filter=".category-6">Equipe F</button>
+      
+      <label>Ordem:</label>
+      
+      <button class="sort" data-sort="sold:asc">Asc</button>
+      <button class="sort" data-sort="sold:desc">Desc</button>
+    </div>
+    <div id="Container" class="container">
+      <div class="mix category-1" data-sold="2000" data-name="Vendedora 1 (Equipe A)"><span>Teste</span></div>
+      <div class="mix category-1" data-sold="3000" data-name="Vendedora 2 (Equipe A)"><span>Teste</span></div>
+      <div class="mix category-1" data-sold="6000" data-name="Vendedora 3 (Equipe A)"><span>Teste</span></div>
+      <div class="mix category-2" data-sold="8000" data-name="Vendedora 4 (Equipe B)"><span>Teste</span></div>
+      <div class="mix category-1" data-sold="5000" data-name="Vendedora 5 (Equipe A)"><span>Teste</span></div>
+      <div class="mix category-1" data-sold="1000" data-name="Vendedora 6 (Equipe A)"><span>Teste</span></div>
+      <div class="mix category-2" data-sold="7000" data-name="Vendedora 7 (Equipe B)"><span>Teste</span></div>
+      <div class="mix category-2" data-sold="4000" data-name="Vendedora 8 (Equipe B)"><span>Teste</span></div>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            $('#Container').mixItUp();
+        });
+    </script>
+</body>
+</html>
