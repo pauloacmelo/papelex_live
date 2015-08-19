@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Papelex</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js?v=2.1.9"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">Vendas %DATE% (Simula&ccedil;&atilde;o)</div>
+    <div class="controls">
+      <label>Filtro:</label>
+      
+      <button class="filter" data-filter="all">Todos</button>
+      <button class="filter" data-filter=".category-1">Equipe A</button>
+      <button class="filter" data-filter=".category-2">Equipe B</button>
+      <button class="filter" data-filter=".category-3">Equipe C</button>
+      <button class="filter" data-filter=".category-4">Equipe D</button>
+      
+      <label>Ordem:</label>
+      
+      <button class="sort" data-sort="sold:desc">Decrescente</button>
+      <!-- <button class="sort" data-sort="sold:asc">Crescente</button> -->
+    </div>
+    <div id="Container" class="container">
+      <div id="salesman1" class="mix category-1" data-sold="5800"><span class="name">Vendedora 1 (Equipe A)</span><span class="value">R$ 2.000,00</span><span class="plus">+ R$ 2.000,00</span></div>
+      <div id="salesman2" class="mix category-1" data-sold="5700"><span class="name">Vendedora 2 (Equipe A)</span><span class="value">R$ 3.000,00</span><span class="plus">+ R$ 3.000,00</span></div>
+      <div id="salesman3" class="mix category-2" data-sold="5600"><span class="name">Vendedora 3 (Equipe A)</span><span class="value">R$ 6.000,00</span><span class="plus">+ R$ 6.000,00</span></div>
+      <div id="salesman4" class="mix category-2" data-sold="5500"><span class="name">Vendedora 4 (Equipe B)</span><span class="value">R$ 8.000,00</span><span class="plus">+ R$ 8.000,00</span></div>
+      <div id="salesman5" class="mix category-3" data-sold="5400"><span class="name">Vendedora 5 (Equipe A)</span><span class="value">R$ 5.000,00</span><span class="plus">+ R$ 5.000,00</span></div>
+      <div id="salesman6" class="mix category-3" data-sold="5300"><span class="name">Vendedora 6 (Equipe A)</span><span class="value">R$ 1.000,00</span><span class="plus">+ R$ 1.000,00</span></div>
+      <div id="salesman7" class="mix category-4" data-sold="5200"><span class="name">Vendedora 7 (Equipe B)</span><span class="value">R$ 7.000,00</span><span class="plus">+ R$ 7.000,00</span></div>
+      <div id="salesman8" class="mix category-4" data-sold="5100"><span class="name">Vendedora 8 (Equipe B)</span><span class="value">R$ 4.000,00</span><span class="plus">+ R$ 4.000,00</span></div>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            $('#Container').mixItUp();
+            $('.header').html($('.header').html().replace('%DATE%', new Date().toJSON().slice(0,10)));
+        });
+        function update_sold(){
+            $('.container>.mix').each(function(index, elem){
+                $(elem).children('.plus').hide(240);
+                if(Math.random() < 0.2){ // Chance of selling
+                    var old_selling = parseFloat($(elem).attr('data-sold'));
+                    var new_selling = old_selling + Math.random()*1000;
+                    $(elem).attr('data-sold', new_selling);
+                    total_money_formatted = (new_selling).toLocaleString("pt-BR", {style: "currency", currency: "BRL", minimumFractionDigits: 2, maximumFractionDigits: 2}).replace('R$', 'R$ ')
+                    diff_money_formatted = (new_selling - old_selling).toLocaleString("pt-BR", {style: "currency", currency: "BRL", minimumFractionDigits: 2, maximumFractionDigits: 2}).replace('R$', 'R$ ')
+                    $(elem).children('.value').html(total_money_formatted);
+                    $(elem).children('.plus').html('+ ' + diff_money_formatted);
+                    $(elem).children('.plus').show(240);
+                }
+            });
+            // $('#Container').mixItUp('sort', $('#Container').mixItUp('getState')['activeSort'])
+            $('#Container').mixItUp('sort', 'sold:desc');
+            setTimeout(update_sold, 1000);
+        }
+        setTimeout(update_sold, 300);
+    </script>
+</body>
+</html>
