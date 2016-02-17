@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  background: white;
+}
+
 body, button{
   font-family: 'Helvetica Neue', arial, sans-serif;
 }
