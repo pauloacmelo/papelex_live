@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="chromecast.js"></script>
 </head>
 <body>
     <div class="header">Vendas %DATE% (Simula&ccedil;&atilde;o)
       <button style="float: right;" class="active" onclick="toggleFullScreen()">Tela cheia</button>
+      <button style="float: right;margin-right: 10px" class="active" onclick="connect()">Cast</button>
+      <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
     </div>
     <div class="controls">
       <label>Filtro:</label>
