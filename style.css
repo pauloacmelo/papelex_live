@@ -8,6 +8,9 @@ html, body {
   background: white;
 }
 
+body {
+  padding: 0 15px;
+}
 body, button{
   font-family: 'Helvetica Neue', arial, sans-serif;
 }
