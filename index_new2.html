@@ -62,13 +62,6 @@ body{ background: #EFEFEF; }
   text-align: center;
   font-weight: 300;
 }
-.card.my-green::after {background: #CCF5AC;}
-.card.my-blue::after {background: #6CCFF6;}
-.card.my-purple::after {background: #B089C0;}
-.card.my-gray::after {background: #757780;}
-.card.my-grey::after {background: #757780;}
-.card.my-orange::after {background: #EDAF97;}
-
 .splitted-card {
   height: 100%;
   padding: 0px;
@@ -83,9 +76,35 @@ body{ background: #EFEFEF; }
   padding-bottom: 5px;
   padding-top: 0px;
 }
-.progress {
+progress {
     margin-bottom: 0;
 }
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+  width: 80%;
+  margin-left: 10%;
+  height: 20px;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  border-radius: 2px; 
+}
+progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient(left, #8451ad, #8451ad);
+  border-radius: 2px; 
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+progress[value].one::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #8451ad, #8451ad); }
+progress[value].two::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #edc951, #edc951); }
+progress[value].three::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #7dbe3c, #7dbe3c); }
+progress[value].four::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #00a0b0, #00a0b0); }
+progress[value].five::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #cc333f, #cc333f); }
+progress[value].six::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #eb6841, #eb6841); }
+progress[value].seven::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #2980b9, #2980b9); }
   </style>
 </head>
 <body>
@@ -112,7 +131,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="10" max="100">10%</progress>
+          <progress class="one" value="10" max="100">10%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -130,7 +149,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="20" max="100">20%</progress>
+          <progress class="two" value="20" max="100">20%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -148,7 +167,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="30" max="100">30%</progress>
+          <progress class="three" value="30" max="100">30%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -166,7 +185,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="40" max="100">40%</progress>
+          <progress class="four" value="40" max="100">40%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -184,7 +203,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="50" max="100">50%</progress>
+          <progress class="five" value="50" max="100">50%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -202,7 +221,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="60" max="100">60%</progress>
+          <progress class="six" value="60" max="100">60%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -220,7 +239,7 @@ body{ background: #EFEFEF; }
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="progress" value="70" max="100">70%</progress>
+          <progress class="seven" value="70" max="100">70%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
