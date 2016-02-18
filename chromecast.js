@@ -83,7 +83,7 @@ function connect() {
   console.log('connect()');
   sendMessage({
     type: 'load',
-    url: 'http://pauloacmelo.github.io/papelex_live',
+    url: document.location,
     refresh: $('#refresh').val(),
   });
 }
