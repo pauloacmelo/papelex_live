@@ -76,26 +76,33 @@ body{ background: #EFEFEF; }
   padding-bottom: 5px;
   padding-top: 0px;
 }
-progress {
-    margin-bottom: 0;
+progress:not([value]) {
+  display: none;
 }
 progress[value] {
   /* Reset the default appearance */
   -webkit-appearance: none;
    appearance: none;
-  width: 80%;
-  margin-left: 10%;
+  margin-left: 5px;
+  margin-right: 15px;
   height: 20px;
+  margin-bottom: 0;
+  padding-right: 10px;
 }
 progress[value]::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 2px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;*/
   border-radius: 2px; 
 }
 progress[value]::-webkit-progress-value {
   background-image: -webkit-linear-gradient(left, #8451ad, #8451ad);
-  border-radius: 2px; 
+  -webkit-border-top-left-radius: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius-topleft: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 progress[value].one::-webkit-progress-value { background-image: -webkit-linear-gradient(left, #8451ad, #8451ad); }
@@ -131,7 +138,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="one" value="10" max="100">10%</progress>
+          <progress class="progress one" value="10" max="100">10%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -149,7 +156,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="two" value="20" max="100">20%</progress>
+          <progress class="progress two" value="20" max="100">20%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -167,7 +174,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="three" value="30" max="100">30%</progress>
+          <progress class="progress three" value="30" max="100">30%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -185,7 +192,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="four" value="40" max="100">40%</progress>
+          <progress class="progress four" value="40" max="100">40%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -203,7 +210,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="five" value="50" max="100">50%</progress>
+          <progress class="progress five" value="50" max="100">50%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -221,7 +228,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="six" value="60" max="100">60%</progress>
+          <progress class="progress six" value="60" max="100">60%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
@@ -239,7 +246,7 @@ progress[value].seven::-webkit-progress-value { background-image: -webkit-linear
               <tr><td>5</td><td>Vendedora 5</td><td>60</td></tr>
             </tbody>
           </table>
-          <progress class="seven" value="70" max="100">70%</progress>
+          <progress class="progress seven" value="70" max="100">70%</progress>
         </div>
       </div>
       <div class="card-container col-md-3">
