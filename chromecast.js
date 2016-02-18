@@ -83,7 +83,7 @@ function connect() {
   console.log('connect()');
   sendMessage({
     type: 'load',
-    url: document.location,
+    url: document.location.href,
     refresh: $('#refresh').val(),
   });
 }
