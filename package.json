@@ -1,0 +1,10 @@
+{
+  "name": "PapelexLive",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "dependencies": {
+    "socket.io": "current",
+    "express": "^4.13.4",
+    "rethinkdb": "^2.2.1"
+  }
+}
