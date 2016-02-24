@@ -13,6 +13,10 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index_new2.html');
 });
 
+app.get('/sender', function (req, res) {
+  res.sendFile(__dirname + '/public/sender.html');
+});
+
 r.connect( {host: 'localhost', port: 28015}, function(err, c) {
   r.db('papelex').table("orders").filter(r.row('DATA').eq(today)).changes().run(c)
     .then(function(cursor) {
@@ -43,8 +47,8 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function () {
-// http.listen(3000, '192.168.24.179', function () {
-// http.listen(3000, '192.168.0.15', function () {
+// http.listen(3000, function () {
+http.listen(80, '192.168.24.179', function () {
+// http.listen(3000, '192.168.0.13', function () {
   console.log('Example app listening on port 3000!');
 });

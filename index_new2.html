@@ -88,8 +88,8 @@ progress[value] {
   margin-left: 1px;
   margin-right: 15px;
   height: 2px;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  margin-bottom: -5px;
+  margin-top: 0px;
   padding-right: 1px;
 }
 progress[value]::-webkit-progress-bar {
@@ -166,16 +166,17 @@ span.legend::after {
   <div class="outer">
     <div class="top">
       <div class="fixed" style="height: 30px"></div>
-      <h2 style="display: inline;">Comercial</h2>
-      <button style="float: right; margin-right: 44px;" class="btn btn-primary" onclick="toggleFullScreen()">Tela cheia</button>
+      <h2 style="display: inline;" id="panelTitle">Comercial</h2>
+      <button style="float: right;margin-right: 44px;" class="btn btn-primary" onclick="toggleFullScreen()">Tela cheia</button>
       <button style="float: right;margin-right: 10px" class="btn btn-primary" id="castButton" onclick="connect()">Cast</button>
+      <h2 style="margin-bottom: -5px; display: inline; padding-top: 0; margin-left: 10px; float: right; margin-right: 44px;" id="currentTime"></h2>
       <span style="float: right; margin-right: 20px;" id="legend"></span>
     </div>
     <div class="content">
       <div class="card-container col-md-3">
         <div class="card" data-team="A">
           <div class="title">Equipe A - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="10" max="100">10%</progress>
+          <progress class="progress zero" value="0" max="100">10%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -188,7 +189,7 @@ span.legend::after {
       <div class="card-container col-md-3">
         <div class="card" data-team="B">
           <div class="title">Equipe B - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="20" max="100">20%</progress>
+          <progress class="progress zero" value="0" max="100">20%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -201,7 +202,7 @@ span.legend::after {
       <div class="card-container col-md-3">
         <div class="card" data-team="C">
           <div class="title">Equipe C - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="30" max="100">30%</progress>
+          <progress class="progress zero" value="0" max="100">30%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -214,7 +215,7 @@ span.legend::after {
       <div class="card-container col-md-3">
         <div class="card" data-team="D">
           <div class="title">Equipe D - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="40" max="100">40%</progress>
+          <progress class="progress zero" value="0" max="100">40%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -227,7 +228,7 @@ span.legend::after {
       <div class="card-container col-md-3">
         <div class="card" data-team="E">
           <div class="title">Equipe E - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="50" max="100">50%</progress>
+          <progress class="progress zero" value="0" max="100">50%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -240,7 +241,7 @@ span.legend::after {
       <div class="card-container col-md-3">
         <div class="card" data-team="I">
           <div class="title">Interior - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="60" max="100">60%</progress>
+          <progress class="progress zero" value="0" max="100">60%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -253,7 +254,7 @@ span.legend::after {
       <div class="card-container col-md-3">
         <div class="card" data-team="R">
           <div class="title">Revenda - <i class="total-orders-by-team">0 pedidos</i></div>
-          <progress class="progress zero" value="70" max="100">70%</progress>
+          <progress class="progress zero" value="0" max="100">70%</progress>
           <table class="table table-sm" style="margin-top: 15px;">
             <thead>
               <tr><th>#</th><th>Vendedor</th><th>Pedidos</th></tr>  
@@ -283,8 +284,21 @@ var intervals = [510, 720, 780, 960, 975, 1080]; // 8h30 to 12h and 13h to 18h
 var interval_durations = [];
 var alreadyGotInitial = false;
 var mixBySalesman = {};
-var allDepartments = {};
-var allDepartmentsColors = {};
+var allDepartments = {
+};
+var allDepartmentsColors = {
+    "PAPEL": "one",
+    "CARTUCHOS/TONNER": "two",
+    "DESCARTAVEIS": "three",
+    "LIMPEZA": "four",
+    "INFORMÁTICA": "five",
+    "MERCEARIA": "six",
+    "ESCRITORIO": "seven",
+    "ALTO VALOR": "eight"
+};
+Object.keys(allDepartmentsColors).forEach(function(k){
+  $('#legend').append('<span class="legendElement ' + allDepartmentsColors[k] + '" style="margin-right: 10px; font-size: 10px; padding: 5px; border-radius: 3px; color: white;">' + k + '</span>');
+});
 var allColors = ['one','two','three','four','five','six','seven', 'eight'];
 for (var i = intervals.length - 1; i >= 0; i-=2)
   interval_durations[(i-1)/2] = intervals[i] - intervals[i-1];
@@ -308,7 +322,24 @@ function getMinutesOfSales() {
   }
   return 0;
 }
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
 $(function () {
+    if(document.location.href.indexOf('?') > 0){
+      $('.top button').remove();
+      dt = new Date();
+      today = (new Date()).toISOString().slice(8, 10) + '/' + (new Date()).toISOString().slice(5, 7) + '/' + (new Date()).toISOString().slice(0, 4);
+      $('#panelTitle').html($('#panelTitle').html() + ' - ' + today);
+      setInterval(function() {
+        dt = new Date();
+        $('#currentTime').html(dt.getHours() + ':' + zeroPad(dt.getMinutes(), 2));
+      }, 1000);      
+    }
+    else {
+      $('#currentTime').hide();
+    }
     var socket = io();
     socket.on('initial_order', function(msg){
       console.log('initial_order');
@@ -343,10 +374,14 @@ $(function () {
       JSON.parse(order['MIX'], function(departmentCode, count){
         if(departmentCode){   
           if (!allDepartments[departmentCode]){
-            color = allColors[Object.keys(allDepartments).length % allColors.length]
             allDepartments[departmentCode] = count;
-            allDepartmentsColors[departmentCode] = color;
-            $('#legend').append('<span class="legendElement ' + color + '" style="margin-right: 10px; font-size: 10px; padding: 5px; border-radius: 3px; color: white;">' + departmentCode + '</span>')
+            if(allDepartmentsColors[departmentCode])
+              color = allDepartmentsColors[departmentCode];
+            else{
+              color = allColors[Object.keys(allDepartments).length % allColors.length];
+              allDepartmentsColors[departmentCode] = color;
+              $('#legend').append('<span class="legendElement ' + color + '" style="margin-right: 10px; font-size: 10px; padding: 5px; border-radius: 3px; color: white;">' + departmentCode + '</span>')
+            }
           }
           else
             allDepartments[departmentCode] += count;
@@ -388,6 +423,10 @@ $(function () {
 
     function updateTeam(teamCode) {
       supervisorCode = getSupervisorCode(teamCode);
+      if (!ordersBySalesman[supervisorCode])
+        ordersBySalesman[supervisorCode] = {};
+      if (!mixBySalesman[supervisorCode])
+        mixBySalesman[supervisorCode] = {};
       keys = Object.keys(ordersBySalesman[supervisorCode]);
       keys.sort(function(k1,k2) {return ordersBySalesman[supervisorCode][k2].length - ordersBySalesman[supervisorCode][k1].length});
       $('[data-team="' + teamCode + '"] table tbody tr').remove();
@@ -413,7 +452,7 @@ $(function () {
         return allColors.indexOf(allDepartmentsColors[k1]) > allColors.indexOf(allDepartmentsColors[k2]) ? 1 : (allColors.indexOf(allDepartmentsColors[k1]) < allColors.indexOf(allDepartmentsColors[k2]) ? -1 : 0)
       });
       keys.forEach(function(k) { totalCount+= mixBySalesman[supervisorCode][k] });
-      $('[data-team="' + teamCode + '"]').append('<svg class="progress" width="100%" height="33" style="border-radius: 5px; height: 25px; margin-bottom: 5px;"></svg>');
+      $('[data-team="' + teamCode + '"]').append('<svg class="progress" width="100%" height="33" style="border-radius: 5px; height: 25px; margin-bottom: 0px;"></svg>');
       keys.forEach(function(k, i) {
         width = 100*mixBySalesman[supervisorCode][k]/totalCount;
         if(width > 10)
