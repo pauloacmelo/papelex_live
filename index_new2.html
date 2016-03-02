@@ -440,7 +440,7 @@ $(function () {
       totalOrdersBySupervisor = 0
       for (var i = keys.length - 1; i >= 0; i--)
         totalOrdersBySupervisor += ordersBySalesman[supervisorCode][keys[i]].length;
-      $('[data-team="' + teamCode + '"] progress').attr('value', 100*totalOrdersBySupervisor/(250*getMinutesOfSales()/totalMinutesOfSales));
+      $('[data-team="' + teamCode + '"] progress').attr('value', 100*totalOrdersBySupervisor/(getTeamGoal(teamCode)*getMinutesOfSales()/totalMinutesOfSales));
       $('[data-team="' + teamCode + '"] .total-orders-by-team').html(totalOrdersBySupervisor.toString() + ' pedidos');
 
       // Update progress bar (on product mix)
@@ -474,10 +474,10 @@ $(function () {
         case 'A': return 7;
         case 'B': return 6;
         case 'C': return 5;
-        case 'D': return 8;
+        case 'D': return 2;
         case 'E': return 18;
         case 'I': return 13;
-        case 'R': return 2;
+        case 'R': return 8;
         default: return 1;
       }
     }
@@ -486,11 +486,23 @@ $(function () {
         case '7': return 'A';
         case '6': return 'B';
         case '5': return 'C';
-        case '8': return 'D';
+        case '8': return 'R';
         case '18': return 'E';
         case '13': return 'I';
-        case '2': return 'R';
+        case '2': return 'D';
         default: return 'Z';
+      }
+    }
+    function getTeamGoal(teamCode) {
+      switch(teamCode){
+        case 'A': return 190;
+        case 'B': return 190;
+        case 'C': return 240;
+        case 'D': return 150;
+        case 'E': return 50;
+        case 'I': return 80;
+        case 'R': return 210;
+        default: return 250;
       }
     }
     function updateSalesDonutChart() {
