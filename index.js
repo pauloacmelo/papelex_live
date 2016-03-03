@@ -10,7 +10,7 @@ app.use('/socket.io', express.static('node_modules/socket.io-client'));
 
 // Main routes
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/templates/index.html');
 });
 
 app.get('/sender', function (req, res) {
